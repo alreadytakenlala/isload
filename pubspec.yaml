@@ -1,0 +1,25 @@
+name: island
+description: A new Flutter application.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/updateguide1.png
+    - assets/images/updateguide2.png
+    - assets/images/updateguide3.png
+    - assets/images/updateguide4.png
+    - assets/images/updateguide5.png
+    - assets/images/updateguide6.png
