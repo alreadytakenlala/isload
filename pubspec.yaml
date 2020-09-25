@@ -9,6 +9,10 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.3
+  rxdart: ^0.24.1
+  dio: ^3.0.9
+  shared_preferences: ^0.5.10
+  video_player: ^0.10.12+3
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +27,26 @@ flutter:
     - assets/images/updateguide4.png
     - assets/images/updateguide5.png
     - assets/images/updateguide6.png
+    - assets/images/me_bg_a.png
+    - assets/images/me_bg_b.png
+    - assets/images/me_top_bg.png
+    - assets/images/login_bottom_icon.png
+    - assets/images/setting_icon.png
+    - assets/images/main_me.png
+    - assets/images/main_main.png
+    - assets/images/main_conversation.png
+    - assets/images/maindrift_hasnews.png
+    - assets/images/main_randomplay.png
+    - assets/images/maindrift_normal.png
+    - assets/images/ic_topic.png
+    - assets/images/item_feedadapter_talk.png
+    - assets/images/love_normal.png
+    - assets/images/love_normal_feed_detail.png
+    - assets/images/loveanimation.png
+    - assets/images/love_press_water_fall.png
+    - assets/images/img_url_right.png
+
+  fonts:
+    - family: iconfont
+      fonts:
+        - asset: assets/font/iconfont.ttf
