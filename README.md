@@ -1,6 +1,6 @@
-# island
+# 岛APP（flutter还原版）
 
-A new Flutter application.
+用flutter实现岛App，90%还原度。
 
 ## Getting Started
 
