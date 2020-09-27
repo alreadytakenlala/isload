@@ -45,6 +45,7 @@ flutter:
     - assets/images/loveanimation.png
     - assets/images/love_press_water_fall.png
     - assets/images/img_url_right.png
+    - assets/images/picture_icon_video_play.png
 
   fonts:
     - family: iconfont

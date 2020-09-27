@@ -9,4 +9,6 @@ class ApiData {
   static final getCategoryWithIsland = "/v1/category/getCategoryWithIsland";
   // 获取推荐提要列表
   static final getRecommendFeedList = "/v1/feed/getRecommendFeedList";
+  // 通过关注获取标记列表
+  static final getFeedListByFollowings = "/v1/feed/getFeedListByFollowings";
 }

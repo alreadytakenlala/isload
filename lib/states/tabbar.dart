@@ -23,13 +23,13 @@ class _TabbarState extends State<Tabbar> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    animiationController = AnimationController(duration: const Duration(milliseconds: 300), vsync: this);
+    animiationController = AnimationController(duration: const Duration(milliseconds: 500), vsync: this);
     animation = Tween(begin: 0.0, end: 1.0).animate(animiationController);
   }
 
   // 是否在main页面上
   bool isInMain(int page) {
-    return page != null && page == 1;
+    return page == 1 || page == 2;
   }
 
   // 监听回到MainHome页面，执行动画
@@ -61,7 +61,7 @@ class _TabbarState extends State<Tabbar> with SingleTickerProviderStateMixin {
                 stream: widget.swiperBloc.stream,
                 builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
                   return AnimatedContainer(
-                      duration: Duration(milliseconds: 100),
+                      duration: Duration(milliseconds: 300),
                       padding: EdgeInsets.only(left: isInMain(snapshot.data) ? 20.0 : 50.0, right: isInMain(snapshot.data) ? 20.0 : 50.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -90,7 +90,7 @@ class _TabbarState extends State<Tabbar> with SingleTickerProviderStateMixin {
                                       Offstage(
                                           offstage: !isInMain(snapshot.data),
                                           child: AnimatedContainer(
-                                              duration: Duration(milliseconds: 300),
+                                              duration: Duration(milliseconds: 500),
                                               width: isInMain(snapshot.data) ? 50.0 : 20.0,
                                               height: isInMain(snapshot.data) ? 50.0 : 20.0,
                                               child: RotationTransition(

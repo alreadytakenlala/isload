@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:island/common/bloc/media_bloc.dart';
+import 'package:island/common/utils/utils.dart';
 import 'package:video_player/video_player.dart';
 
 class Video extends StatefulWidget {
@@ -29,7 +30,6 @@ class _VideoState extends State<Video> {
     }
     _controller.addListener(() {
       bloc.sink.add(_controller.value);
-      print(_controller.value.aspectRatio);
     });
     _controller.setLooping(true);
     _controller.initialize();
@@ -42,15 +42,19 @@ class _VideoState extends State<Video> {
         child: StreamBuilder(
             stream: bloc.stream,
             builder: (BuildContext context, AsyncSnapshot<VideoPlayerValue> snapshot) {
-              return AspectRatio(
+              return snapshot.data != null && snapshot.data.size != null ? AspectRatio(
                   aspectRatio: _controller.value.aspectRatio,
                   child: Stack(
-                      alignment: Alignment.bottomCenter,
+                      alignment: Alignment.center,
                       children: <Widget>[
-                        VideoPlayer(_controller)
+                        VideoPlayer(_controller),
+                        Image.asset(
+                            Utils.getImgPath("picture_icon_video_play"),
+                            width: 30
+                        )
                       ]
                   )
-              );
+              ) : Container();
             }
         )
     );

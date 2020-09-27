@@ -26,6 +26,14 @@ class _SwiperState extends State<Swiper> {
       viewportFraction: 1.0
   );
 
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      widget.bloc.indexSink.add(controller.page);
+    });
+  }
+
   List<Container> carousel() {
     List<Container> carousel = [];
     for (int i=0; i < widget.itemCount; i++) {

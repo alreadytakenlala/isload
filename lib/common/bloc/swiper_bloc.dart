@@ -8,8 +8,13 @@ class SwiperBloc extends BaseBloc {
   StreamSink<int> get sink => subject.sink;
   Stream<int> get stream => subject.stream;
 
+  BehaviorSubject<double> indexSubject = BehaviorSubject<double>();
+  StreamSink<double> get indexSink => indexSubject.sink;
+  Stream<double> get indexStream => indexSubject.stream;
+
   @override
   void dispose() {
     subject.close();
+    indexSubject.close();
   }
 }

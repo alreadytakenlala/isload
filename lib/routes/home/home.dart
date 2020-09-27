@@ -7,10 +7,12 @@ import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/states/swiper.dart';
 import 'package:island/states/tabbar.dart';
 import 'package:island/widgets/home_main/main_home.dart';
+import 'package:island/widgets/home_mark/mark_home.dart';
 import 'package:island/widgets/home_me/me.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_banner.dart';
+import 'main_nav.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -48,15 +50,33 @@ class _HomeState extends State<Home> {
                         bloc: new MeBloc(),
                         child: BlocProvider(
                           bloc: new MainBloc(),
-                          child: Swiper(
-                              itemCount: 3,
-                              indicatorDots: false,
-                              bloc: swiperBloc,
-                              itemBuilder: (context, index) {
-                                if (index == 0) return Me(homeSwiperBloc: swiperBloc);
-                                else if (index == 1) return MainHome();
-                                else return Me(homeSwiperBloc: swiperBloc);
-                              }
+                          child: BlocProvider(
+                            bloc: swiperBloc,
+                            child: Stack(
+                                children: <Widget>[
+                                  Swiper(
+                                      itemCount: 4,
+                                      indicatorDots: false,
+                                      bloc: swiperBloc,
+                                      itemBuilder: (context, index) {
+                                        if (index == 0) return Me();
+                                        else if (index == 1) return MainHome();
+                                        else if (index == 2) return Mark();
+                                        else return Me();
+                                      }
+                                  ),
+                                  StreamBuilder(
+                                      stream: swiperBloc.indexStream,
+                                      builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
+                                        double index = snapshot.data;
+                                        return Offstage(
+                                            offstage: !(index != null && index >= 1 && index <= 2),
+                                            child: MainNav()
+                                        );
+                                      }
+                                  )
+                                ]
+                            )
                           )
                         )
                     )

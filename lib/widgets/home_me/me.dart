@@ -2,23 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/home_bloc.dart';
 import 'package:island/common/bloc/me_bloc.dart';
-import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/modules/api_data.dart';
 import 'package:island/modules/Category_data.dart';
 import 'package:island/common/utils/http.dart';
 import 'package:island/common/utils/utils.dart';
-import 'dart:math' as math;
 
 import 'me_category_list.dart';
 import 'me_user_info.dart';
 
 class Me extends StatefulWidget {
-  final SwiperBloc homeSwiperBloc;
-  Me({
-    Key key,
-    @required this.homeSwiperBloc
-  }) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => _MeState();
 }
@@ -38,7 +30,7 @@ class _MeState extends State<Me> with AutomaticKeepAliveClientMixin {
 
   void listenerListView() {
     listController.addListener(() {
-      print(listController.offset);
+//      print(listController.offset);
     });
   }
 

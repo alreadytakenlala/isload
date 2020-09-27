@@ -172,7 +172,7 @@ class Recommend extends StatelessWidget {
                                 height: 8.0,
                                 margin: EdgeInsets.only(right: 3.0),
                                 decoration: BoxDecoration(
-                                    color: Color(Utils.getColorByBase7(recommend["island"]["backgroundColor"][0])),
+                                    color: Color(Utils.getColorByBase7(recommend["island"]["backgroundColor"][0] is int ? recommend["island"]["backgroundColor"][0] : 4207660)),
                                     borderRadius: BorderRadius.circular(2.0)
                                 )
                             )
