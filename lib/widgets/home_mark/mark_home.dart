@@ -3,8 +3,11 @@ import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/mark_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/http.dart';
+import 'package:island/common/utils/utils.dart';
 import 'package:island/modules/api_data.dart';
+import 'package:island/modules/category_data.dart';
 import 'package:island/routes/home/main_nav.dart';
+import 'package:island/states/category.dart';
 import 'package:island/widgets/home_main/recommend.dart';
 
 class Mark extends StatefulWidget {
@@ -21,22 +24,45 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
   void initState() {
     super.initState();
     loadList();
+    loadCategorys();
+  }
+
+  loadCategorys() async {
+    var res = await Http.get(api: ApiData.getMarkCategoryList);
+    bloc.categorysSink.add(res);
   }
 
   loadList() async {
     var res = await Http.get(api: ApiData.getFeedListByFollowings);
-    print(res);
     bloc.listSink.add(res);
   }
 
-  // 加载推荐列表
-  Widget loadRecommendList(list) {
+  Widget loadMarkList(list) {
     List<Widget> recommends = [];
+    for (int i=0; i<list.length; i++) recommends.add(Recommend(recommend: list[i]));
+    return Column(
+      children: recommends
+    );
+  }
+
+  Widget loadCategorysList(list) {
+    List<Widget> categorys = [];
     for (int i=0; i<list.length; i++) {
-      recommends.add(Recommend(recommend: list[i]));
+      dynamic island = list[i]["island"];
+      categorys.add(Container(
+          margin: EdgeInsets.only(left: i > 0 ? 10.0 : 0.0),
+          child: Category(backgroundColor: island["backgroundColor"][0], name: island["name"], banner: island["banner"])
+      ));
     }
-    return ListView(
-        children: recommends
+    return Container(
+        height: 135.0,
+        margin: EdgeInsets.only(left: 10.0, bottom: 30.0),
+        child: ListView(
+            cacheExtent: 3000.0,
+            scrollDirection: Axis.horizontal,
+            physics: BouncingScrollPhysics(),
+            children: categorys
+        )
     );
   }
 
@@ -45,8 +71,6 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
     homeSwiperBolc = BlocProvider.of<SwiperBloc>(context);
     return Container(
       color: Color(0xFF0e0e0e),
-      width: double.infinity,
-      height: double.infinity,
       child: Stack(
           children: <Widget>[
             StreamBuilder(
@@ -56,14 +80,25 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
                   return (index != null && index > 2) ? MainNav() : Container();
                 }
             ),
-            StreamBuilder(
-                stream: bloc.listStream,
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  return Container(
-                      margin: EdgeInsets.only(top: 80.0),
-                      child: snapshot.data != null ? loadRecommendList(snapshot.data) : Container()
-                  );
-                }
+            Container(
+                margin: EdgeInsets.only(top: 80.0),
+                child: ListView(
+                    cacheExtent: 3000.0,
+                    children: <Widget>[
+                      StreamBuilder(
+                        stream: bloc.categorysStream,
+                        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                          return snapshot.data != null ? loadCategorysList(snapshot.data) : Container();
+                        }
+                      ),
+                      StreamBuilder(
+                          stream: bloc.listStream,
+                          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                            return snapshot.data != null ? loadMarkList(snapshot.data) : Container();
+                          }
+                      )
+                    ]
+                )
             )
           ]
       )

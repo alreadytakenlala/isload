@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/me_bloc.dart';
 import 'package:island/modules/Category_data.dart';
+import 'package:island/states/category.dart';
 
 class MeCategoryList extends StatefulWidget {
   @override
@@ -20,33 +21,10 @@ class _MeCategoryListState extends State<MeCategoryList> {
         CategoryItem categoryItem = categoryData.list[j];
         categoryItemWidget.add(Container(
             margin: EdgeInsets.only(left: j!=0?12.0:0),
-            child: ClipRRect(
-                borderRadius: BorderRadius.circular(5.0),
-                child: Stack(
-                    children: <Widget>[
-                      Image.network(categoryItem.banner,
-                          fit: BoxFit.fill,
-                          width: 100.0,
-                          height: 135.0
-                      ),
-                      Container(
-                          alignment: Alignment.center,
-                          child: Container(
-                              width: 60.0,
-                              height: 20.0,
-                              margin: EdgeInsets.only(left: 20.0),
-                              alignment: Alignment.center,
-                              color: Color(categoryItem.backgroundColor),
-                              child: Text(categoryItem.name,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12.0
-                                  )
-                              )
-                          )
-                      )
-                    ]
-                )
+            child: Category(
+              backgroundColor: categoryItem.backgroundColor,
+              name: categoryItem.name,
+              banner: categoryItem.banner
             )
         ));
       }
@@ -71,6 +49,7 @@ class _MeCategoryListState extends State<MeCategoryList> {
                 height: 135.0,
                 margin: EdgeInsets.only(top: 21.0),
                 child: ListView(
+                    cacheExtent: 3000.0,
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     children: categoryItemWidget

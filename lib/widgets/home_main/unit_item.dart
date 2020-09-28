@@ -15,9 +15,9 @@ class UnitItem extends StatefulWidget {
 
 class _UnitItemState extends State<UnitItem> {
 
-  Widget getMedia({url, width, height, maxWidth=double.infinity, maxHeight=double.infinity}) {
+  Widget getMedia({url, width, height, maxWidth=200.0, maxHeight=200.0}) {
     if (url == null) return Container();
-    return url.endsWith("mp4") ? Video(url: url) : ClipRRect(
+    return url.endsWith("mp4") ? Video(url: url, maxWidth: maxWidth, maxHeight: maxHeight) : ClipRRect(
       borderRadius: BorderRadius.circular(5.0),
       child: Container(
           constraints: BoxConstraints(maxWidth: maxWidth),

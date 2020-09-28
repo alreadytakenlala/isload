@@ -9,6 +9,7 @@ import 'package:island/states/tabbar.dart';
 import 'package:island/widgets/home_main/main_home.dart';
 import 'package:island/widgets/home_mark/mark_home.dart';
 import 'package:island/widgets/home_me/me.dart';
+import 'package:island/widgets/home_message/message.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_banner.dart';
@@ -62,7 +63,7 @@ class _HomeState extends State<Home> {
                                         if (index == 0) return Me();
                                         else if (index == 1) return MainHome();
                                         else if (index == 2) return Mark();
-                                        else return Me();
+                                        else return Message();
                                       }
                                   ),
                                   StreamBuilder(

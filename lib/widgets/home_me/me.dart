@@ -54,69 +54,67 @@ class _MeState extends State<Me> with AutomaticKeepAliveClientMixin {
     super.build(context);
     bloc = BlocProvider.of<MeBloc>(context);
     homeBloc = BlocProvider.of<HomeBloc>(context);
-    return Material(
-        child: Container(
-            color: Color(0xFF0e0e0e),
-            child: Stack(
-                children: <Widget>[
-                  Container(
-                      alignment: Alignment.topRight,
-                      child: Image.asset(
-                          Utils.getImgPath("me_bg_a"),
-                          width: 110.0
-                      )
-                  ),
-                  Container(
-                      alignment: Alignment.topRight,
-                      margin: EdgeInsets.only(top: 50.0, right: 20.0),
-                      child: Image.asset(
-                          Utils.getImgPath("setting_icon"),
-                          width: 20.0
-                      )
-                  ),
-                  Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      alignment: Alignment.center,
-                      transform: Matrix4.translationValues(0, 200, 0),
-                      child: Image.asset(
-                          Utils.getImgPath("login_bottom_icon"),
-                          width: 160.0
-                      )
-                  ),
-                  Container(
-                      margin: EdgeInsets.only(top: 80.0),
-                      child: ListView(
-                          controller: listController,
-                          children: <Widget>[
-                            Stack(
-                                children: <Widget>[
-                                  Container(
-                                      alignment: Alignment.topCenter,
-                                      margin: EdgeInsets.only(left: 17.0),
-                                      transform: Matrix4.translationValues(0, -20, 0),
-                                      child: MeUserInfo(width: 356.0)
-                                  ),
-                                  Container(
-                                      margin: EdgeInsets.only(top: 70.0),
-                                      child: Image.asset(
-                                          Utils.getImgPath("me_bg_b"),
-                                          width: 30.0
-                                      )
-                                  ),
-                                  Container(
-                                      margin: EdgeInsets.only(top: 123.0, left: 14.0),
-                                      child: MeCategoryList()
-                                  )
-                                ]
-                            )
-                          ]
-                      )
-                  )
-                ]
-            )
-        )
-    );
+    return Container(
+          color: Color(0xFF0e0e0e),
+          child: Stack(
+              children: <Widget>[
+                Container(
+                    alignment: Alignment.topRight,
+                    child: Image.asset(
+                        Utils.getImgPath("me_bg_a"),
+                        width: 110.0
+                    )
+                ),
+                Container(
+                    alignment: Alignment.topRight,
+                    margin: EdgeInsets.only(top: 50.0, right: 20.0),
+                    child: Image.asset(
+                        Utils.getImgPath("setting_icon"),
+                        width: 20.0
+                    )
+                ),
+                Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    alignment: Alignment.center,
+                    transform: Matrix4.translationValues(0, 200, 0),
+                    child: Image.asset(
+                        Utils.getImgPath("login_bottom_icon"),
+                        width: 160.0
+                    )
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: 80.0),
+                    child: ListView(
+                        controller: listController,
+                        children: <Widget>[
+                          Stack(
+                              children: <Widget>[
+                                Container(
+                                    alignment: Alignment.topCenter,
+                                    margin: EdgeInsets.only(left: 17.0),
+                                    transform: Matrix4.translationValues(0, -20, 0),
+                                    child: MeUserInfo(width: 356.0)
+                                ),
+                                Container(
+                                    margin: EdgeInsets.only(top: 70.0),
+                                    child: Image.asset(
+                                        Utils.getImgPath("me_bg_b"),
+                                        width: 30.0
+                                    )
+                                ),
+                                Container(
+                                    margin: EdgeInsets.only(top: 123.0, left: 14.0),
+                                    child: MeCategoryList()
+                                )
+                              ]
+                          )
+                        ]
+                    )
+                )
+              ]
+          )
+      );
   }
 
   @override

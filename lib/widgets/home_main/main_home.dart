@@ -50,6 +50,7 @@ class _MainHomeState extends State<MainHome> with AutomaticKeepAliveClientMixin 
     }
     return ListView(
       controller: listViewController,
+      cacheExtent: 3000.0,
       children: recommends
     );
   }

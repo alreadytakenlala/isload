@@ -9,8 +9,13 @@ class MarkBloc extends BaseBloc {
   StreamSink<dynamic> get listSink => listSubject.sink;
   Stream<dynamic> get listStream => listSubject.stream;
 
+  BehaviorSubject<dynamic> categorysSubject = BehaviorSubject<dynamic>();
+  StreamSink<dynamic> get categorysSink => categorysSubject.sink;
+  Stream<dynamic> get categorysStream => categorysSubject.stream;
+
   @override
   void dispose() {
     listSubject.close();
+    categorysSubject.close();
   }
 }
