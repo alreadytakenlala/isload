@@ -32,6 +32,9 @@ class _SwiperState extends State<Swiper> {
     controller.addListener(() {
       widget.bloc.indexSink.add(controller.page);
     });
+    widget.bloc.toStream.listen((data) {
+      controller.animateToPage(data, duration: Duration(milliseconds: 100), curve: Curves.linear);
+    });
   }
 
   List<Container> carousel() {
@@ -74,8 +77,6 @@ class _SwiperState extends State<Swiper> {
           Offstage(
             offstage: !widget.indicatorDots,
             child: Container(
-                width: double.infinity,
-                height: double.infinity,
                 transform: Matrix4.translationValues(0, 163, 0),
                 child: Center(
                     child: Row(

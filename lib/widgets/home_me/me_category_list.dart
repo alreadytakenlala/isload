@@ -49,7 +49,7 @@ class _MeCategoryListState extends State<MeCategoryList> {
                 height: 135.0,
                 margin: EdgeInsets.only(top: 21.0),
                 child: ListView(
-                    cacheExtent: 3000.0,
+                    cacheExtent: double.infinity,
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     children: categoryItemWidget

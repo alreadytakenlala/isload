@@ -50,6 +50,7 @@ flutter:
     - assets/images/ic_interaction_love.png
     - assets/images/ic_interaction_comment.png
     - assets/images/ic_interaction_favorite.png
+    - assets/images/login_bottom_light.png
 
   fonts:
     - family: iconfont

@@ -12,8 +12,6 @@ class NavBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         color: Color(0xFF0e0e0e),
-        width: double.infinity,
-        height: double.infinity,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

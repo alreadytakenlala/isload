@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/home_bloc.dart';
@@ -25,13 +26,6 @@ class _MeState extends State<Me> with AutomaticKeepAliveClientMixin {
   void initState() {
     super.initState();
     loadCategory();
-    listenerListView();
-  }
-
-  void listenerListView() {
-    listController.addListener(() {
-//      print(listController.offset);
-    });
   }
 
   void loadCategory() async {
@@ -51,6 +45,7 @@ class _MeState extends State<Me> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
+    Size allSize = MediaQuery.of(context).size;
     super.build(context);
     bloc = BlocProvider.of<MeBloc>(context);
     homeBloc = BlocProvider.of<HomeBloc>(context);
@@ -58,53 +53,90 @@ class _MeState extends State<Me> with AutomaticKeepAliveClientMixin {
           color: Color(0xFF0e0e0e),
           child: Stack(
               children: <Widget>[
-                Container(
-                    alignment: Alignment.topRight,
+                Positioned(
+                  right: 0,
                     child: Image.asset(
                         Utils.getImgPath("me_bg_a"),
                         width: 110.0
                     )
                 ),
-                Container(
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(top: 50.0, right: 20.0),
+                Positioned(
+                    right: 20.0,
+                    top: 50.0,
                     child: Image.asset(
                         Utils.getImgPath("setting_icon"),
                         width: 20.0
                     )
                 ),
-                Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    alignment: Alignment.center,
-                    transform: Matrix4.translationValues(0, 200, 0),
+                Positioned(
+                    top: 190.0,
                     child: Image.asset(
-                        Utils.getImgPath("login_bottom_icon"),
-                        width: 160.0
+                        Utils.getImgPath("me_bg_b"),
+                        width: 30.0
+                    )
+                ),
+                StreamBuilder(
+                  stream: bloc.categoryListStream,
+                  builder: (BuildContext context, AsyncSnapshot<List<CategoryData>> snapshot) {
+                    return Offstage(
+                      offstage: snapshot.data != null,
+                      child: Positioned(
+                          top: allSize.height / 2.8,
+                          child: Container(
+                              width: allSize.width,
+                              alignment: Alignment.center,
+                              child: Column(
+                                  children: <Widget>[
+                                    Text("这里的每一座「岛」都代表了年轻人的“元”", style: TextStyle(
+                                        color: Color(0xFF5E5E5E),
+                                        fontSize: 14.0
+                                    )),
+                                    Text("多元共生 和而不同", style: TextStyle(
+                                        color: Color(0xFF5E5E5E),
+                                        fontSize: 14.0
+                                    ))
+                                  ]
+                              )
+                          )
+                      )
+                    );
+                  }
+                ),
+                Positioned(
+                    bottom: allSize.height / 8,
+                    child: Container(
+                      width: allSize.width,
+                      alignment: Alignment.center,
+                      child: Column(
+                          children: <Widget>[
+                            Container(
+                              transform: Matrix4.translationValues(0, 5.0, 0),
+                              child: Image.asset(
+                                  Utils.getImgPath("login_bottom_light"),
+                                  width: 20.0
+                              )
+                            ),
+                            Image.asset(
+                                Utils.getImgPath("login_bottom_icon"),
+                                width: 200.0
+                            )
+                          ]
+                      )
                     )
                 ),
                 Container(
-                    margin: EdgeInsets.only(top: 80.0),
+                    margin: EdgeInsets.only(top: 60.0),
                     child: ListView(
                         controller: listController,
                         children: <Widget>[
                           Stack(
                               children: <Widget>[
-                                Container(
-                                    alignment: Alignment.topCenter,
-                                    margin: EdgeInsets.only(left: 17.0),
-                                    transform: Matrix4.translationValues(0, -20, 0),
+                                Positioned(
+                                    left: 17.0,
                                     child: MeUserInfo(width: 356.0)
                                 ),
                                 Container(
-                                    margin: EdgeInsets.only(top: 70.0),
-                                    child: Image.asset(
-                                        Utils.getImgPath("me_bg_b"),
-                                        width: 30.0
-                                    )
-                                ),
-                                Container(
-                                    margin: EdgeInsets.only(top: 123.0, left: 14.0),
+                                    margin: EdgeInsets.only(top: 145.0, left: 14.0),
                                     child: MeCategoryList()
                                 )
                               ]

@@ -15,9 +15,15 @@ class ApplicationBloc extends BaseBloc {
   StreamSink<int> get tabberSink => tabberSubject.sink;
   Stream<int> get tabberStream => tabberSubject.stream;
 
+  // main页面nav按钮事件
+  BehaviorSubject<int> mainNavSubject = BehaviorSubject<int>();
+  StreamSink<int> get mainNavSink => mainNavSubject.sink;
+  Stream<int> get mainNavStream => mainNavSubject.stream;
+
   @override
   void dispose() {
     userInfoSubject.close();
     tabberSubject.close();
+    mainNavSubject.close();
   }
 }

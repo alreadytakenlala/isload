@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:island/common/bloc/application_bloc.dart';
 import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/utils.dart';
@@ -27,6 +28,7 @@ class _MainNavState extends State<MainNav> {
   @override
   Widget build(BuildContext context) {
     homeSwiperBolc = BlocProvider.of<SwiperBloc>(context);
+    ApplicationBloc applicationBloc = BlocProvider.of<ApplicationBloc>(context);
     return Stack(
         children: <Widget>[
           Container(
@@ -37,18 +39,28 @@ class _MainNavState extends State<MainNav> {
                   double index = snapshot.data;
                   return Row(
                       children: <Widget>[
-                        Container(
-                            width: 50.0,
-                            height: 40.0,
-                            alignment: Alignment.bottomCenter,
-                            child: index != null ? genderMenu("环游", index >= 0 && index < 1.5) : Container()
+                        GestureDetector(
+                          child: Container(
+                              width: 50.0,
+                              height: 40.0,
+                              alignment: Alignment.bottomCenter,
+                              child: index != null ? genderMenu("环游", index >= 0 && index < 1.5) : Container()
+                          ),
+                          onTap: () {
+                            applicationBloc.mainNavSubject.sink.add(1);
+                          }
                         ),
-                        Container(
-                            width: 50.0,
-                            height: 40.0,
-                            alignment: Alignment.bottomCenter,
-                            margin: EdgeInsets.only(left: 7.0),
-                            child: index != null ? genderMenu("标记", index >= 1.5 && index <= 3) : Container()
+                        GestureDetector(
+                          child: Container(
+                              width: 50.0,
+                              height: 40.0,
+                              alignment: Alignment.bottomCenter,
+                              margin: EdgeInsets.only(left: 7.0),
+                              child: index != null ? genderMenu("标记", index >= 1.5 && index <= 3) : Container()
+                          ),
+                          onTap: () {
+                            applicationBloc.mainNavSubject.sink.add(2);
+                          }
                         )
                       ]
                   );

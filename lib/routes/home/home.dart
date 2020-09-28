@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:island/common/bloc/application_bloc.dart';
 import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/home_bloc.dart';
 import 'package:island/common/bloc/main_bloc.dart';
@@ -35,6 +36,13 @@ class _HomeState extends State<Home> {
     HomeBloc homeBloc = BlocProvider.of<HomeBloc>(context);
     initBuild(homeBloc);
     SwiperBloc swiperBloc = new SwiperBloc();
+    ApplicationBloc applicationBloc = BlocProvider.of<ApplicationBloc>(context);
+    applicationBloc.tabberStream.listen((data) {
+      swiperBloc.toSink.add(data);
+    });
+    applicationBloc.mainNavStream.listen((data) {
+      swiperBloc.toSink.add(data);
+    });
     return Material(
       child: StreamBuilder(
         stream: homeBloc.bannerJumpStream,

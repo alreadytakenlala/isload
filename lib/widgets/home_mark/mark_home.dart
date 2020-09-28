@@ -58,7 +58,7 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
         height: 135.0,
         margin: EdgeInsets.only(left: 10.0, bottom: 30.0),
         child: ListView(
-            cacheExtent: 3000.0,
+            cacheExtent: double.infinity,
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
             children: categorys
@@ -83,7 +83,7 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
             Container(
                 margin: EdgeInsets.only(top: 80.0),
                 child: ListView(
-                    cacheExtent: 3000.0,
+                    cacheExtent: double.infinity,
                     children: <Widget>[
                       StreamBuilder(
                         stream: bloc.categorysStream,
