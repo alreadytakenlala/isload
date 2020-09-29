@@ -51,6 +51,10 @@ flutter:
     - assets/images/ic_interaction_comment.png
     - assets/images/ic_interaction_favorite.png
     - assets/images/login_bottom_light.png
+    - assets/images/img_splash_top.png
+    - assets/images/start_text.png
+    - assets/images/umeng_socialize_back_icon.png
+    - assets/images/ic_feeddetali_more.png
 
   fonts:
     - family: iconfont

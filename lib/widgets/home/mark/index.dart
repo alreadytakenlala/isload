@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:island/common/bloc/base_bloc.dart';
-import 'package:island/common/bloc/mark_bloc.dart';
+import 'file:///D:/project-study/mobility/island/lib/common/bloc/home/mark/mark_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/http.dart';
-import 'package:island/common/utils/utils.dart';
 import 'package:island/modules/api_data.dart';
-import 'package:island/modules/category_data.dart';
-import 'package:island/routes/home/main_nav.dart';
 import 'package:island/states/category.dart';
-import 'package:island/widgets/home_main/recommend.dart';
+import 'package:island/widgets/home/main/nav.dart';
+import 'package:island/widgets/home/main/recommend.dart';
 
 class Mark extends StatefulWidget {
   @override
@@ -77,7 +75,7 @@ class _Mark extends State<Mark> with AutomaticKeepAliveClientMixin {
                 stream: homeSwiperBolc.indexStream,
                 builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
                   double index = snapshot.data;
-                  return (index != null && index > 2) ? MainNav() : Container();
+                  return (index != null && index > 2) ? Nav() : Container();
                 }
             ),
             Container(

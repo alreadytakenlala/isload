@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import 'package:video_player/video_player.dart';
-import 'base_bloc.dart';
+import '../../base_bloc.dart';
 
 class MessageBloc extends BaseBloc {
 

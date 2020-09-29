@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:island/common/utils/http.dart';
-import 'package:island/routes/home/home.dart';
+import 'package:island/routes/home/index.dart';
+import 'package:island/routes/island/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:island/common/bloc/application_bloc.dart';
 import 'package:island/common/bloc/base_bloc.dart';
-import 'package:island/common/bloc/home_bloc.dart';
 import 'package:island/common/global.dart';
 import 'package:island/modules/api_data.dart';
 import 'package:island/modules/user_data.dart';
@@ -17,10 +16,7 @@ void main() {
   Global.init(() {
     runApp(BlocProvider(
         bloc: applicationBloc,
-        child: BlocProvider(
-            bloc: HomeBloc(),
-            child: Application()
-        ))
+        child: Application())
     );
     loadUserInfo();
   });
@@ -52,6 +48,7 @@ class Application extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
+        "island_page": (context) => new IslandPage()
       },
       home: new Home()
     );

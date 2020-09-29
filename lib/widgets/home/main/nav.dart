@@ -4,14 +4,14 @@ import 'package:island/common/bloc/base_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/utils.dart';
 
-class MainNav extends StatefulWidget {
+class Nav extends StatefulWidget {
   final int index;
-  MainNav({Key key, this.index}) : super(key: key);
+  Nav({Key key, this.index}) : super(key: key);
   @override
-  State<StatefulWidget> createState() => _MainNavState();
+  State<StatefulWidget> createState() => _NavState();
 }
 
-class _MainNavState extends State<MainNav> {
+class _NavState extends State<Nav> {
 
   SwiperBloc homeSwiperBolc;
 

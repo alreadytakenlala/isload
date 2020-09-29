@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:island/common/bloc/base_bloc.dart';
-import 'package:island/common/bloc/home_bloc.dart';
+import 'package:island/common/bloc/home/home_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/modules/nav_data.dart';
 import 'package:island/common/utils/utils.dart';
 import 'package:island/states/swiper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'nav_banner.dart';
 
-class HomeBanner extends StatefulWidget {
+class StartBanner extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _HomeBannerState();
+  State<StatefulWidget> createState() => _StartBannerState();
 }
 
-class _HomeBannerState extends State<HomeBanner> {
+class _StartBannerState extends State<StartBanner> {
   HomeBloc homeBloc;
   static List<NavData> navs = [
     new NavData(
@@ -69,12 +70,11 @@ class _HomeBannerState extends State<HomeBanner> {
   // 设置隐藏栏
   void setEnabledSystemUIOverlays() async {
     SharedPreferences storage = await SharedPreferences.getInstance();
-
   }
 
   @override
   Widget build(BuildContext context) {
-    HomeBloc homeBloc = BlocProvider.of<HomeBloc>(context);
+    homeBloc = BlocProvider.of<HomeBloc>(context);
     SwiperBloc swiperBloc = new SwiperBloc();
     return Material(
         child: Stack(
@@ -103,6 +103,7 @@ class _HomeBannerState extends State<HomeBanner> {
                               child: FloatingActionButton.extended(
                                   label: Text("跳过", style: TextStyle(color: Color(0xFF0e0e0e))),
                                   backgroundColor: Color(0xFF686868),
+                                  heroTag: "home_jump_button",
                                   onPressed: () {
                                     homeBloc.bannerJumpSink.add(true);
                                   }

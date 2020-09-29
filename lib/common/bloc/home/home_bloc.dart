@@ -15,6 +15,7 @@ class HomeBloc extends BaseBloc {
     bannerJumpStream.listen(recordBannerJump);
   }
 
+  // 把是否显示过banner缓存下来
   void recordBannerJump(bool data) async {
     SystemChrome.setEnabledSystemUIOverlays(data == true ? [SystemUiOverlay.top, SystemUiOverlay.bottom] : []);
     if (data == true) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:island/common/bloc/message_bloc.dart';
+import 'file:///D:/project-study/mobility/island/lib/common/bloc/home/message/message_bloc.dart';
 import 'package:island/common/utils/http.dart';
 import 'package:island/modules/api_data.dart';
-import 'package:island/widgets/home_message/msg.dart';
 
 import 'menus.dart';
+import 'msg.dart';
 
 class Message extends StatefulWidget {
   @override

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:island/common/bloc/base_bloc.dart';
-import 'package:island/common/bloc/main_bloc.dart';
+import 'package:island/common/bloc/home/main/main_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/http.dart';
 import 'package:island/modules/api_data.dart';
-import 'package:island/widgets/home_main/recommend.dart';
-import '../../routes/home/main_nav.dart';
+import 'package:island/widgets/home/main/recommend.dart';
 
-class MainHome extends StatefulWidget {
+import 'nav.dart';
+
+class Main extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => _MainHomeState();
+  State<StatefulWidget> createState() => _MainState();
 }
 
-class _MainHomeState extends State<MainHome> with AutomaticKeepAliveClientMixin {
+class _MainState extends State<Main> with AutomaticKeepAliveClientMixin {
   MainBloc bloc;
   SwiperBloc homeSwiperBolc;
 
@@ -70,7 +71,7 @@ class _MainHomeState extends State<MainHome> with AutomaticKeepAliveClientMixin 
             stream: homeSwiperBolc.indexStream,
             builder: (BuildContext context, AsyncSnapshot<double> snapshot) {
               double index = snapshot.data;
-              return (index != null && index < 1) ? MainNav() : Container();
+              return (index != null && index < 1) ? Nav() : Container();
             }
           ),
           StreamBuilder(
