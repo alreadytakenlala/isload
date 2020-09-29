@@ -6,7 +6,7 @@ import 'package:island/common/utils/http.dart';
 import 'package:island/modules/api_data.dart';
 import 'package:island/states/category.dart';
 import 'package:island/widgets/home/main/nav.dart';
-import 'package:island/widgets/home/main/recommend.dart';
+import 'file:///D:/project-study/mobility/island/lib/states/recommend.dart';
 
 class Mark extends StatefulWidget {
   @override

@@ -26,8 +26,8 @@ class _MeCategoryListState extends State<MeCategoryList> {
                   name: categoryItem["name"],
                   banner: categoryItem["banner"]
               ),
-              onTap: () => {
-                  Navigator.pushNamed(context, "island_page")
+              onTap: () {
+                  Navigator.pushNamed(context, "island_page", arguments: categoryItem["id"]);
               }
             )
         ));

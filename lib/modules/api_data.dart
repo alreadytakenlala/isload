@@ -15,4 +15,10 @@ class ApiData {
   static final getMarkCategoryList = "/v1/island/getPassportJoinedIslandListWithFeedCount";
   // 获取消息列表
   static final getMessageList = "/v1/message";
+  // 根据岛ID获取岛详情
+  static final getIslandById = "/v1/island/getIsland";
+  // 根据岛ID获取列表
+  static final getFeedListByIsland = "/v1/feed/getFeedListByIsland";
+  // 根据岛ID获取主题列表
+  static final getIslandBindingTopicList = "/v1/topic/getIslandBindingTopicList";
 }

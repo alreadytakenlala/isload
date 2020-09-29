@@ -4,7 +4,7 @@ import 'package:island/common/bloc/home/main/main_bloc.dart';
 import 'package:island/common/bloc/swiper_bloc.dart';
 import 'package:island/common/utils/http.dart';
 import 'package:island/modules/api_data.dart';
-import 'package:island/widgets/home/main/recommend.dart';
+import 'file:///D:/project-study/mobility/island/lib/states/recommend.dart';
 
 import 'nav.dart';
 

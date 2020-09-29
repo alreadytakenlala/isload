@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
                             child: Entrance()
                         ),
                         Offstage(
-                            offstage: snapshot.data != null ? snapshot.data : false,
+                            offstage: snapshot.data != null ? snapshot.data : true,
                             child: StartBanner()
                         ),
                         Offstage(

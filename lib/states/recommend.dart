@@ -1,9 +1,8 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:island/common/utils/utils.dart';
-import 'package:island/widgets/home/main/unit_item.dart';
+import 'file:///D:/project-study/mobility/island/lib/states/unit_item.dart';
 
 class Recommend extends StatelessWidget {
   dynamic recommend;

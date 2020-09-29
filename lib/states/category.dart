@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:island/common/utils/utils.dart';
 
 class Category extends StatefulWidget {
   final int backgroundColor;
@@ -12,6 +13,7 @@ class Category extends StatefulWidget {
 }
 
 class _CategoryState extends State<Category> {
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -30,7 +32,7 @@ class _CategoryState extends State<Category> {
                       height: 20.0,
                       margin: EdgeInsets.only(left: 20.0),
                       alignment: Alignment.center,
-                      color: Color(widget.backgroundColor),
+                      color: Color(Utils.getColorByBase7(widget.backgroundColor)),
                       child: Text(widget.name,
                           style: TextStyle(
                               color: Colors.white,

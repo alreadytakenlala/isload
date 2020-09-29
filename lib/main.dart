@@ -47,10 +47,16 @@ class Application extends StatelessWidget {
         primaryColor: Colors.white
       ),
       debugShowCheckedModeBanner: false,
-      routes: {
-        "island_page": (context) => new IslandPage()
-      },
-      home: new Home()
+      home: new Island(id: "5d0772d433e8bb34bf2a9ece"),
+//      home: new Home(),
+      onGenerateRoute: (RouteSettings settings) {
+        var routes = <String, WidgetBuilder>{
+          "island_page": (context) => new Island(id: settings.arguments),
+          "/": (context) => new Home()
+        };
+        WidgetBuilder builder = routes[settings.name];
+        return MaterialPageRoute(builder: (ctx) => builder(ctx));
+      }
     );
   }
 }
